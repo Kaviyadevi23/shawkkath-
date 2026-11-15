@@ -1,22 +1,73 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shawkkath 🤍</title>
 
-{
-font-size:90px;
-animation:bob 2s infinite;
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+margin:0;background:#f8efe4;color:#725748;
+font-family:Georgia,serif;text-align:center;
 }
-@keyframes bob{
-50%{transform:translateY(-10px)}
+section{
+min-height:100vh;padding:60px 20px;
+display:flex;flex-direction:column;
+align-items:center;justify-content:center;
+position:relative;
 }
+.hero{
+background:radial-gradient(circle,#fff8ed,#ead8c6);
+}
+h1{font-size:clamp(38px,9vw,70px);font-weight:normal}
+h2{font-weight:normal;font-size:35px}
+p{line-height:1.9;max-width:500px}
+.small{letter-spacing:4px;font:11px Arial;color:#a58b76}
+
+.moon{
+width:140px;height:140px;border-radius:50%;
+background:#fff5d9;box-shadow:0 0 60px #fff;
+margin:25px;animation:float 3s infinite;
+}
+@keyframes float{
+50%{transform:translateY(-15px)}
+}
+
+button{
+background:#a08168;color:white;border:0;
+padding:15px 28px;border-radius:30px;
+cursor:pointer;margin:12px;font-size:14px;
+}
+button:hover{background:#80624d}
+
+.card{
+background:#fff9f1;padding:30px;
+border-radius:25px;max-width:500px;
+width:100%;box-shadow:0 10px 30px #0001;
+}
+
+.photo{
+width:280px;height:330px;
+background:#f0dfce;border:2px dashed #c9aa8c;
+border-radius:20px;margin:20px auto;
+display:flex;align-items:center;justify-content:center;
+overflow:hidden;color:#a58b76;
+}
+.photo img{width:100%;height:100%;object-fit:cover}
+
+#letter{white-space:pre-line;line-height:2}
+.cake{font-size:90px;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+
 footer{padding:30px;color:#a58b76}
 .star{
-position:fixed;color:white;
-font-size:22px;pointer-events:none;
-animation:twinkle 2s infinite alternate;
+position:fixed;color:white;font-size:22px;
+pointer-events:none;animation:twinkle 2s infinite alternate;
 }
-@keyframes twinkle{
-from{opacity:.3}
-to{opacity:1}
-}
+@keyframes twinkle{from{opacity:.3}to{opacity:1}}
 </style>
 </head>
 
@@ -26,7 +77,8 @@ to{opacity:1}
 <div class="small">A LITTLE UNIVERSE MADE FOR YOU</div>
 <div class="moon"></div>
 <h1>Happy Birthday<br><i>Shawkkath</i> 🤍</h1>
-<p>Some people make ordinary days feel magical.<br>Today, the universe celebrates you.</p>
+<p>Some people make ordinary days feel magical.<br>
+Today, the universe celebrates you.</p>
 <button onclick="go('memory')">Open Your Surprise ↓</button>
 </section>
 
@@ -49,10 +101,9 @@ Our photo goes here 🤍
 <section>
 <div class="small">A LETTER FOR YOU</div>
 <h2>Open My Heart 💌</h2>
+
 <div class="card">
-<p id="letter">
-A little birthday wish is waiting...
-</p>
+<p id="letter">A little birthday wish is waiting...</p>
 <button onclick="letter()">Open Letter</button>
 </div>
 </section>
@@ -114,5 +165,6 @@ setTimeout(()=>s.remove(),3000);
 }
 }
 </script>
+
 </body>
 </html>
