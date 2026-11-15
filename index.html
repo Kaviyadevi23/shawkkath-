@@ -1,1 +1,46 @@
-birthday surprise 
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shawkkath ♡</title>
+<style>
+body{margin:0;background:#fff5e9;color:#73535c;text-align:center;font-family:Georgia;padding:25px}
+.card{background:#fffaf4;border-radius:30px;padding:25px;margin:20px auto;max-width:400px;box-shadow:0 8px 30px #e9cbd5}
+h1{color:#c76e91;font-size:42px}
+.moon{font-size:110px;margin:15px}
+button{background:#d77b9b;color:white;border:0;padding:14px 25px;border-radius:30px;font-size:16px;margin:10px}
+img{width:90%;max-width:300px;border-radius:20px;margin:15px}
+</style>
+</head>
+<body>
+<div class="card">
+<div style="font-size:14px">A LITTLE SURPRISE FOR YOU ✨</div>
+<div class="moon">🌙</div>
+<h1>Happy Birthday<br>Shawkkath!</h1>
+<p>November 26 🎂</p>
+<button onclick="openGift()">Open Your Surprise 💌</button>
+<div id="gift" style="display:none">
+<h2>Make a Wish! 🎂</h2>
+<p>You deserve all the happiness in the world 🤍</p>
+<div style="font-size:70px">🎁💗🧸</div>
+<h2>A little message for you</h2>
+<p>May your smile always shine brighter than the stars.<br>Wishing you endless love, happiness & beautiful memories!</p>
+<h2>Our Memories 📸</h2>
+<input type="file" accept="image/*" onchange="showPhoto(event)">
+<div id="photo"></div>
+<h1>Forever Special ♡</h1>
+</div>
+</div>
+<script>
+function openGift(){
+document.getElementById('gift').style.display='block';
+}
+function showPhoto(e){
+let r=new FileReader();
+r.onload=()=>document.getElementById('photo').innerHTML='<img src="'+r.result+'">';
+r.readAsDataURL(e.target.files[0]);
+}
+</script>
+</body>
+</html>
