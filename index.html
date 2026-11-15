@@ -1,45 +1,117 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shawkkath ♡</title>
-<style>
-body{margin:0;background:#fff5e9;color:#73535c;text-align:center;font-family:Georgia;padding:25px}
-.card{background:#fffaf4;border-radius:30px;padding:25px;margin:20px auto;max-width:400px;box-shadow:0 8px 30px #e9cbd5}
-h1{color:#c76e91;font-size:42px}
-.moon{font-size:110px;margin:15px}
-button{background:#d77b9b;color:white;border:0;padding:14px 25px;border-radius:30px;font-size:16px;margin:10px}
-img{width:90%;max-width:300px;border-radius:20px;margin:15px}
+
+{
+font-size:90px;
+animation:bob 2s infinite;
+}
+@keyframes bob{
+50%{transform:translateY(-10px)}
+}
+footer{padding:30px;color:#a58b76}
+.star{
+position:fixed;color:white;
+font-size:22px;pointer-events:none;
+animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+from{opacity:.3}
+to{opacity:1}
+}
 </style>
 </head>
+
 <body>
+
+<section class="hero">
+<div class="small">A LITTLE UNIVERSE MADE FOR YOU</div>
+<div class="moon"></div>
+<h1>Happy Birthday<br><i>Shawkkath</i> 🤍</h1>
+<p>Some people make ordinary days feel magical.<br>Today, the universe celebrates you.</p>
+<button onclick="go('memory')">Open Your Surprise ↓</button>
+</section>
+
+<section id="memory">
+<div class="small">OUR LITTLE MEMORY</div>
+<h2>Under the Same Moon 🌙</h2>
+
+<div class="photo" id="photo">
+Our photo goes here 🤍
+</div>
+
+<label for="upload">
+<button>Select Our Photo 📷</button>
+</label>
+<input id="upload" type="file" accept="image/*" hidden>
+
+<p>Two smiles, one beautiful memory.</p>
+</section>
+
+<section>
+<div class="small">A LETTER FOR YOU</div>
+<h2>Open My Heart 💌</h2>
 <div class="card">
-<div style="font-size:14px">A LITTLE SURPRISE FOR YOU ✨</div>
-<div class="moon">🌙</div>
-<h1>Happy Birthday<br>Shawkkath!</h1>
-<p>November 26 🎂</p>
-<button onclick="openGift()">Open Your Surprise 💌</button>
-<div id="gift" style="display:none">
-<h2>Make a Wish! 🎂</h2>
-<p>You deserve all the happiness in the world 🤍</p>
-<div style="font-size:70px">🎁💗🧸</div>
-<h2>A little message for you</h2>
-<p>May your smile always shine brighter than the stars.<br>Wishing you endless love, happiness & beautiful memories!</p>
-<h2>Our Memories 📸</h2>
-<input type="file" accept="image/*" onchange="showPhoto(event)">
-<div id="photo"></div>
-<h1>Forever Special ♡</h1>
+<p id="letter">
+A little birthday wish is waiting...
+</p>
+<button onclick="letter()">Open Letter</button>
 </div>
-</div>
+</section>
+
+<section>
+<div class="small">MAKE A WISH</div>
+<h2>One Candle, Countless Wishes</h2>
+<div class="cake">🎂</div>
+<button onclick="wish()">Blow Your Candles ✨</button>
+<p id="wishText"></p>
+</section>
+
+<section>
+<div class="moon"></div>
+<h2>Keep Shining, Shawkkath 🤍</h2>
+<p>May your life be filled with love, happiness and beautiful memories.</p>
+<div class="small">26 NOVEMBER · MADE WITH LOVE</div>
+</section>
+
+<footer>For Shawkkath, with love ✨</footer>
+
 <script>
-function openGift(){
-document.getElementById('gift').style.display='block';
+function go(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
-function showPhoto(e){
-let r=new FileReader();
-r.onload=()=>document.getElementById('photo').innerHTML='<img src="'+r.result+'">';
-r.readAsDataURL(e.target.files[0]);
+
+document.getElementById("upload").onchange=function(e){
+const file=e.target.files[0];
+if(!file)return;
+const img=document.createElement("img");
+img.src=URL.createObjectURL(file);
+const box=document.getElementById("photo");
+box.innerHTML="";
+box.appendChild(img);
+};
+
+function letter(){
+document.getElementById("letter").textContent=
+"Happy Birthday, Shawkkath 🤍\n\n"+
+"I hope life gives you a thousand reasons to smile. "+
+"Thank you for being someone who makes memories special.\n\n"+
+"May every dream you keep close find its way to you. "+
+"Stay happy, stay healthy and keep shining.\n\n"+
+"Today is your day. Enjoy every little moment! ✨\n\n"+
+"With lots of love 🤍";
+}
+
+function wish(){
+document.getElementById("wishText").textContent=
+"✨ Your wish is on its way to the universe! ✨";
+for(let i=0;i<20;i++){
+let s=document.createElement("span");
+s.textContent="✦";
+s.className="star";
+s.style.left=Math.random()*100+"%";
+s.style.top=Math.random()*100+"%";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),3000);
+}
 }
 </script>
 </body>
