@@ -3,167 +3,191 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Shawkkath 🤍</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For Shawkkath 🌙</title>
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
-margin:0;background:#f8efe4;color:#725748;
+margin:0;background:#f8eee2;color:#735746;
 font-family:Georgia,serif;text-align:center;
+overflow-x:hidden
 }
 section{
-min-height:100vh;padding:60px 20px;
+min-height:100vh;padding:35px 20px;
 display:flex;flex-direction:column;
-align-items:center;justify-content:center;
-position:relative;
+justify-content:center;align-items:center;
+position:relative;overflow:hidden
 }
 .hero{
-background:radial-gradient(circle,#fff8ed,#ead8c6);
+background:radial-gradient(circle,#fff9ef,#e8d4bd);
 }
-h1{font-size:clamp(38px,9vw,70px);font-weight:normal}
-h2{font-weight:normal;font-size:35px}
+h1{font-size:clamp(40px,10vw,75px);font-weight:normal}
+h2{font-size:35px;font-weight:normal}
 p{line-height:1.9;max-width:500px}
-.small{letter-spacing:4px;font:11px Arial;color:#a58b76}
+.small{letter-spacing:4px;font:11px Arial;color:#a68a72}
 
 .moon{
-width:140px;height:140px;border-radius:50%;
-background:#fff5d9;box-shadow:0 0 60px #fff;
-margin:25px;animation:float 3s infinite;
+width:180px;height:180px;border-radius:50%;
+background:#fff4d6;
+box-shadow:0 0 40px #fff,0 0 100px #f4dcae;
+position:relative;margin:30px;
+animation:moon 5s ease-in-out infinite
 }
-@keyframes float{
-50%{transform:translateY(-15px)}
+@keyframes moon{
+50%{transform:translateY(-20px);box-shadow:0 0 70px #fff}
+}
+
+.moonPhoto{
+width:125px;height:125px;border-radius:50%;
+position:absolute;top:28px;left:28px;
+object-fit:cover;opacity:0;
+animation:reveal 3s 2s forwards
+}
+@keyframes reveal{
+to{opacity:1;transform:scale(1.05)}
 }
 
 button{
-background:#a08168;color:white;border:0;
 padding:15px 28px;border-radius:30px;
-cursor:pointer;margin:12px;font-size:14px;
+border:none;background:#96765e;color:white;
+cursor:pointer;margin:15px;font-size:14px
 }
-button:hover{background:#80624d}
+button:hover{background:#70543f}
 
 .card{
-background:#fff9f1;padding:30px;
-border-radius:25px;max-width:500px;
-width:100%;box-shadow:0 10px 30px #0001;
+background:#fff9f2;padding:30px;
+border-radius:25px;max-width:500px;width:100%;
+box-shadow:0 15px 45px #a98a681a
 }
-
 .photo{
-width:280px;height:330px;
-background:#f0dfce;border:2px dashed #c9aa8c;
-border-radius:20px;margin:20px auto;
+width:270px;height:330px;border-radius:20px;
+background:#ead7c4;border:2px dashed #c6a68a;
 display:flex;align-items:center;justify-content:center;
-overflow:hidden;color:#a58b76;
+overflow:hidden;margin:20px
 }
 .photo img{width:100%;height:100%;object-fit:cover}
-
 #letter{white-space:pre-line;line-height:2}
-.cake{font-size:90px;animation:bob 2s infinite}
-@keyframes bob{50%{transform:translateY(-10px)}}
+.cake{font-size:100px;animation:bounce 2s infinite}
+@keyframes bounce{50%{transform:translateY(-15px)}}
 
-footer{padding:30px;color:#a58b76}
 .star{
-position:fixed;color:white;font-size:22px;
-pointer-events:none;animation:twinkle 2s infinite alternate;
+position:fixed;top:-20px;color:#fff;
+font-size:20px;pointer-events:none;
+animation:fall linear forwards
 }
-@keyframes twinkle{from{opacity:.3}to{opacity:1}}
+@keyframes fall{
+to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+footer{padding:30px;color:#a68a72}
 </style>
 </head>
 
 <body>
 
 <section class="hero">
-<div class="small">A LITTLE UNIVERSE MADE FOR YOU</div>
-<div class="moon"></div>
-<h1>Happy Birthday<br><i>Shawkkath</i> 🤍</h1>
-<p>Some people make ordinary days feel magical.<br>
-Today, the universe celebrates you.</p>
-<button onclick="go('memory')">Open Your Surprise ↓</button>
-</section>
+<div class="small">A LITTLE MAGIC FOR YOU</div>
 
-<section id="memory">
-<div class="small">OUR LITTLE MEMORY</div>
-<h2>Under the Same Moon 🌙</h2>
-
-<div class="photo" id="photo">
-Our photo goes here 🤍
+<div class="moon">
+<img class="moonPhoto" id="moonPhoto"
+src="ourphoto.jpg" alt="Our photo">
 </div>
 
-<label for="upload">
-<button>Select Our Photo 📷</button>
-</label>
-<input id="upload" type="file" accept="image/*" hidden>
+<h1>Happy Birthday<br>
+<i>Shawkkath</i> 🤍</h1>
 
-<p>Two smiles, one beautiful memory.</p>
+<p>Tonight, the stars shine just for you.<br>
+A little surprise made with love.</p>
+
+<button onclick="scrollToSection('memories')">
+Open Your Surprise ✨
+</button>
+</section>
+
+<section id="memories">
+<div class="small">OUR BEAUTIFUL MEMORY</div>
+<h2>Under the Same Moon 🌙</h2>
+
+<div class="photo">
+<img src="ourphoto.jpg" alt="Our memory">
+</div>
+
+<p>Some memories deserve their own little universe.</p>
+
+<label>
+<button onclick="document.getElementById('upload').click()">
+Preview Another Photo 📷
+</button>
+</label>
+<input type="file" id="upload" accept="image/*" hidden>
+
 </section>
 
 <section>
-<div class="small">A LETTER FOR YOU</div>
-<h2>Open My Heart 💌</h2>
+<div class="small">A LETTER FROM MY HEART</div>
+<h2>For You 💌</h2>
 
 <div class="card">
-<p id="letter">A little birthday wish is waiting...</p>
-<button onclick="letter()">Open Letter</button>
+<p id="letter">A little birthday letter is waiting...</p>
+<button onclick="openLetter()">Open My Letter</button>
 </div>
 </section>
 
 <section>
 <div class="small">MAKE A WISH</div>
-<h2>One Candle, Countless Wishes</h2>
+<h2>One Candle, Infinite Wishes</h2>
+
 <div class="cake">🎂</div>
-<button onclick="wish()">Blow Your Candles ✨</button>
-<p id="wishText"></p>
+<button onclick="celebrate()">Blow Your Candles ✨</button>
+<p id="wish"></p>
 </section>
 
 <section>
 <div class="moon"></div>
 <h2>Keep Shining, Shawkkath 🤍</h2>
-<p>May your life be filled with love, happiness and beautiful memories.</p>
+<p>May every day bring you happiness, love and beautiful memories.</p>
 <div class="small">26 NOVEMBER · MADE WITH LOVE</div>
 </section>
 
-<footer>For Shawkkath, with love ✨</footer>
+<footer>For Shawkkath, with love 🌙</footer>
 
 <script>
-function go(id){
+function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-document.getElementById("upload").onchange=function(e){
-const file=e.target.files[0];
-if(!file)return;
-const img=document.createElement("img");
-img.src=URL.createObjectURL(file);
-const box=document.getElementById("photo");
-box.innerHTML="";
-box.appendChild(img);
-};
-
-function letter(){
+function openLetter(){
 document.getElementById("letter").textContent=
 "Happy Birthday, Shawkkath 🤍\n\n"+
-"I hope life gives you a thousand reasons to smile. "+
-"Thank you for being someone who makes memories special.\n\n"+
-"May every dream you keep close find its way to you. "+
-"Stay happy, stay healthy and keep shining.\n\n"+
-"Today is your day. Enjoy every little moment! ✨\n\n"+
-"With lots of love 🤍";
+"Some people make life more beautiful just by being in it.\n"+
+"I hope your days are filled with happiness, your dreams come true, "+
+"and your heart always stays peaceful.\n\n"+
+"Thank you for every smile, every memory and every little moment.\n\n"+
+"Stay happy. Stay special. Keep shining.\n\n"+
+"With lots of love ✨";
 }
 
-function wish(){
-document.getElementById("wishText").textContent=
-"✨ Your wish is on its way to the universe! ✨";
-for(let i=0;i<20;i++){
+function celebrate(){
+document.getElementById("wish").textContent=
+"Your birthday wish is flying to the stars! 🌟";
+for(let i=0;i<45;i++){
 let s=document.createElement("span");
-s.textContent="✦";
 s.className="star";
-s.style.left=Math.random()*100+"%";
-s.style.top=Math.random()*100+"%";
+s.textContent=Math.random()>.5?"✦":"✧";
+s.style.left=Math.random()*100+"vw";
+s.style.animationDuration=(3+Math.random()*4)+"s";
 document.body.appendChild(s);
-setTimeout(()=>s.remove(),3000);
+setTimeout(()=>s.remove(),7000);
 }
 }
+
+document.getElementById("upload").onchange=function(e){
+let file=e.target.files[0];
+if(!file)return;
+let url=URL.createObjectURL(file);
+document.querySelectorAll(".photo img").forEach(img=>img.src=url);
+document.getElementById("moonPhoto").src=url;
+};
 </script>
 
 </body>
